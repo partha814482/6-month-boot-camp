@@ -1,0 +1,267 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| customers          |
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use customers;
+Database changed
+mysql> select * from customers;
++----+----------+-----+-----------+----------+
+| id | name     | age | address   | salary   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  2 | Khilan   |  25 | Delhi     |  1500.00 |
+|  3 | Kaushik  |  23 | Kota      |  2000.00 |
+|  4 | Chaitali |  25 | Delhi     |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 |
+|  6 | Komal    |  22 | MP        |  4500.00 |
+|  7 | Muffy    |  24 | Indore    | 10000.00 |
++----+----------+-----+-----------+----------+
+7 rows in set (0.00 sec)
+
+mysql> select id, name, salary from customers;
++----+----------+----------+
+| id | name     | salary   |
++----+----------+----------+
+|  1 | Ramesh   |  2000.00 |
+|  2 | Khilan   |  1500.00 |
+|  3 | Kaushik  |  2000.00 |
+|  4 | Chaitali |  6500.00 |
+|  5 | Hardik   |  8500.00 |
+|  6 | Komal    |  4500.00 |
+|  7 | Muffy    | 10000.00 |
++----+----------+----------+
+7 rows in set (0.00 sec)
+
+mysql> select address from customers;
++-----------+
+| address   |
++-----------+
+| Ahmedabad |
+| Delhi     |
+| Kota      |
+| Delhi     |
+| Bhopal    |
+| MP        |
+| Indore    |
++-----------+
+7 rows in set (0.00 sec)
+
+mysql> select name,address from customers;
++----------+-----------+
+| name     | address   |
++----------+-----------+
+| Ramesh   | Ahmedabad |
+| Khilan   | Delhi     |
+| Kaushik  | Kota      |
+| Chaitali | Delhi     |
+| Hardik   | Bhopal    |
+| Komal    | MP        |
+| Muffy    | Indore    |
++----------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> select id,name,salary from customers where salary >2000;
++----+----------+----------+
+| id | name     | salary   |
++----+----------+----------+
+|  4 | Chaitali |  6500.00 |
+|  5 | Hardik   |  8500.00 |
+|  6 | Komal    |  4500.00 |
+|  7 | Muffy    | 10000.00 |
++----+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select id , name , address, salary from customers where name = 'Hardik';
++----+--------+---------+---------+
+| id | name   | address | salary  |
++----+--------+---------+---------+
+|  5 | Hardik | Bhopal  | 8500.00 |
++----+--------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> select id ,address,name, salary from customers where name = 'Hardik';
++----+---------+--------+---------+
+| id | address | name   | salary  |
++----+---------+--------+---------+
+|  5 | Bhopal  | Hardik | 8500.00 |
++----+---------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> select name from customers;
++----------+
+| name     |
++----------+
+| Ramesh   |
+| Khilan   |
+| Kaushik  |
+| Chaitali |
+| Hardik   |
+| Komal    |
+| Muffy    |
++----------+
+7 rows in set (0.00 sec)
+
+mysql> select id , name, address, salary from customers where name = 'Ramesh';
++----+--------+-----------+---------+
+| id | name   | address   | salary  |
++----+--------+-----------+---------+
+|  1 | Ramesh | Ahmedabad | 2000.00 |
++----+--------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select id, name , salary from customers where age >25 and salary > 2000;
++----+--------+---------+
+| id | name   | salary  |
++----+--------+---------+
+|  5 | Hardik | 8500.00 |
++----+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> select id, name , salary , age from customers where age >25 and salary > 2000;
++----+--------+---------+-----+
+| id | name   | salary  | age |
++----+--------+---------+-----+
+|  5 | Hardik | 8500.00 |  27 |
++----+--------+---------+-----+
+1 row in set (0.00 sec)
+
+mysql> select * from customers;
++----+----------+-----+-----------+----------+
+| id | name     | age | address   | salary   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  2 | Khilan   |  25 | Delhi     |  1500.00 |
+|  3 | Kaushik  |  23 | Kota      |  2000.00 |
+|  4 | Chaitali |  25 | Delhi     |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 |
+|  6 | Komal    |  22 | MP        |  4500.00 |
+|  7 | Muffy    |  24 | Indore    | 10000.00 |
++----+----------+-----+-----------+----------+
+7 rows in set (0.00 sec)
+
+mysql>  select id ,name, age, salary from customers where age > 20 and salary > 3000;
++----+----------+-----+----------+
+| id | name     | age | salary   |
++----+----------+-----+----------+
+|  4 | Chaitali |  25 |  6500.00 |
+|  5 | Hardik   |  27 |  8500.00 |
+|  6 | Komal    |  22 |  4500.00 |
+|  7 | Muffy    |  24 | 10000.00 |
++----+----------+-----+----------+
+4 rows in set (0.00 sec)
+
+mysql>  select id ,name, age, salary from customers where age > 20 or salary > 3000;
++----+----------+-----+----------+
+| id | name     | age | salary   |
++----+----------+-----+----------+
+|  1 | Ramesh   |  32 |  2000.00 |
+|  2 | Khilan   |  25 |  1500.00 |
+|  3 | Kaushik  |  23 |  2000.00 |
+|  4 | Chaitali |  25 |  6500.00 |
+|  5 | Hardik   |  27 |  8500.00 |
+|  6 | Komal    |  22 |  4500.00 |
+|  7 | Muffy    |  24 | 10000.00 |
++----+----------+-----+----------+
+7 rows in set (0.00 sec)
+
+mysql> update customers set address = 'pune' where id = 6;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customers;
++----+----------+-----+-----------+----------+
+| id | name     | age | address   | salary   |
++----+----------+-----+-----------+----------+
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 |
+|  2 | Khilan   |  25 | Delhi     |  1500.00 |
+|  3 | Kaushik  |  23 | Kota      |  2000.00 |
+|  4 | Chaitali |  25 | Delhi     |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 |
+|  6 | Komal    |  22 | pune      |  4500.00 |
+|  7 | Muffy    |  24 | Indore    | 10000.00 |
++----+----------+-----+-----------+----------+
+7 rows in set (0.00 sec)
+
+mysql> update customers set where id = 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id = 1' at line 1
+mysql> update customers set address = 'odisha' where id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customers;
++----+----------+-----+---------+----------+
+| id | name     | age | address | salary   |
++----+----------+-----+---------+----------+
+|  1 | Ramesh   |  32 | odisha  |  2000.00 |
+|  2 | Khilan   |  25 | Delhi   |  1500.00 |
+|  3 | Kaushik  |  23 | Kota    |  2000.00 |
+|  4 | Chaitali |  25 | Delhi   |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal  |  8500.00 |
+|  6 | Komal    |  22 | pune    |  4500.00 |
+|  7 | Muffy    |  24 | Indore  | 10000.00 |
++----+----------+-----+---------+----------+
+7 rows in set (0.00 sec)
+
+mysql> update customers set salary  = 5000 where id  = 2;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customers;
++----+----------+-----+---------+----------+
+| id | name     | age | address | salary   |
++----+----------+-----+---------+----------+
+|  1 | Ramesh   |  32 | odisha  |  2000.00 |
+|  2 | Khilan   |  25 | Delhi   |  5000.00 |
+|  3 | Kaushik  |  23 | Kota    |  2000.00 |
+|  4 | Chaitali |  25 | Delhi   |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal  |  8500.00 |
+|  6 | Komal    |  22 | pune    |  4500.00 |
+|  7 | Muffy    |  24 | Indore  | 10000.00 |
++----+----------+-----+---------+----------+
+7 rows in set (0.00 sec)
+
+mysql> insert into customers (id , name , age, address, salary) values ( 8, 'chitta', 24, 'Balasore', 12000);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from customers;
++----+----------+-----+----------+----------+
+| id | name     | age | address  | salary   |
++----+----------+-----+----------+----------+
+|  1 | Ramesh   |  32 | odisha   |  2000.00 |
+|  2 | Khilan   |  25 | Delhi    |  5000.00 |
+|  3 | Kaushik  |  23 | Kota     |  2000.00 |
+|  4 | Chaitali |  25 | Delhi    |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal   |  8500.00 |
+|  6 | Komal    |  22 | pune     |  4500.00 |
+|  7 | Muffy    |  24 | Indore   | 10000.00 |
+|  8 | chitta   |  24 | Balasore | 12000.00 |
++----+----------+-----+----------+----------+
+8 rows in set (0.00 sec)
+
+mysql> delete from customers where id = 8;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customers;
++----+----------+-----+---------+----------+
+| id | name     | age | address | salary   |
++----+----------+-----+---------+----------+
+|  1 | Ramesh   |  32 | odisha  |  2000.00 |
+|  2 | Khilan   |  25 | Delhi   |  5000.00 |
+|  3 | Kaushik  |  23 | Kota    |  2000.00 |
+|  4 | Chaitali |  25 | Delhi   |  6500.00 |
+|  5 | Hardik   |  27 | Bhopal  |  8500.00 |
+|  6 | Komal    |  22 | pune    |  4500.00 |
+|  7 | Muffy    |  24 | Indore  | 10000.00 |
++----+----------+-----+---------+----------+
+7 rows in set (0.00 sec)
+
+mysql>
